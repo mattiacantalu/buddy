@@ -2,7 +2,7 @@ import Foundation
 
 extension BuddyService {
     func getBuilds(appId: String,
-                   size: Int = 10,
+                   size: Int = Constants.URL.limitValue,
                    completion: @escaping ((Result<[BuildResponse]>) -> Void)) {
         
         let url = baseURL?

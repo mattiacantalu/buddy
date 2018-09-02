@@ -10,6 +10,7 @@ struct Constants {
         static let status = "status"
         static let statusSuccess = "success"
         static let limit = "limit"
+        static let limitValue = 10
     }
     
     struct Error {
