@@ -14,13 +14,22 @@ struct BuildResponse: Codable {
     let id: String
     let name: String
     let buildNumber: Int
-    let buildStatus: String
     let date: String?
     let commit: CommitInfoReponse
     let links: LinksResponse
+    private let buildStatus: String
+    private let tags: [String]?
 
     var status: BuildStatus {
         return BuildStatus(rawValue: buildStatus) ?? .unknown
+    }
+    
+    var tag: String? {
+        return tags?.first
+    }
+
+    var download: String? {
+        return links.install.first?.url
     }
 
     private enum CodingKeys : String, CodingKey {
@@ -30,7 +39,8 @@ struct BuildResponse: Codable {
         buildStatus = "build_status",
         date = "finished_at",
         commit = "commit_info",
-        links = "links"
+        links = "links",
+        tags = "tags"
     }
 }
 
