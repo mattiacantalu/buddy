@@ -47,11 +47,13 @@ struct BuildResponse: Codable {
 struct CommitInfoReponse: Codable {
     let author: String
     let branch: String
+    let message: String
     let url: String
 
     private enum CodingKeys : String, CodingKey {
         case author = "author",
         branch = "branch",
+        message = "message",
         url = "html_url"
     }
 }

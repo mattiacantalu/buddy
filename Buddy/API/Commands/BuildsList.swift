@@ -2,7 +2,7 @@ import Foundation
 
 extension BuddyService {
     func getBuilds(appId: String,
-                   size: Int = Constants.URL.limitValue,
+                   limitTo limit: Int = Constants.URL.limitValue,
                    completion: @escaping ((Result<[BuildResponse]>) -> Void)) {
         
         let url = baseURL?
@@ -11,7 +11,7 @@ extension BuddyService {
             .appendingPathComponent(Constants.URL.builds)
         
         performTry({ try self.makeRequest(url?.appending(params: [Constants.URL.status: Constants.URL.statusSuccess,
-                                                                  Constants.URL.limit: size.stringValue]),
+                                                                  Constants.URL.limit: limit.stringValue]),
                                           map: [BuildResponse].self,
                                           completion: completion) })
     }

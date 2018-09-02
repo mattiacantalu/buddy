@@ -11,7 +11,7 @@ private struct Constant {
     }
 }
 
-class BuildsViewController: UIViewController {
+final class BuildsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView?
     
     private var cellForRowCallbacks: [((Int) -> Bool, (UITableView, IndexPath) -> UITableViewCell)] = []
@@ -56,7 +56,8 @@ class BuildsViewController: UIViewController {
         let config = Configuration(token: Constant.token,
                                    urlString: Constant.baseUrl)
         let buddy = BuddyService(configuration: config)
-        buddy.getBuilds(appId: app.id) { result in
+        buddy.getBuilds(appId: app.id,
+                        limitTo: 50) { result in
             switch result {
             case .success(let response):
                 self.builds = response
