@@ -7,6 +7,9 @@ struct Constants {
         static let authHeaderValue = "Bearer"
         static let apps = "apps"
         static let builds = "builds"
+        static let status = "status"
+        static let statusSuccess = "success"
+        static let limit = "limit"
     }
     
     struct Error {

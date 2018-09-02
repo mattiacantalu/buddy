@@ -7,3 +7,9 @@ func performTry(_ function: @escaping (() throws -> Void)) {
         print("❌ \(error) ❌")
     }
 }
+
+extension Int {
+    var stringValue: String {
+        return String(self)
+    }
+}
