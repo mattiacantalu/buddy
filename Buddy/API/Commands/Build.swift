@@ -4,7 +4,7 @@ extension BuddyService {
     func getBuild(number: String,
                   completion: @escaping ((Result<BuildResponse>) -> Void)) {
         let url = baseURL?
-            .appendingPathComponent("builds")
+            .appendingPathComponent(Constants.URL.builds)
             .appendingPathComponent(number)
 
         performTry({ try self.makeRequest(url,

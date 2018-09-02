@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6236B662213C12940002D18F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6236B661213C12940002D18F /* Constants.swift */; };
 		AC0EBD7421090AEC00074EE1 /* BuildDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0EBD7321090AEC00074EE1 /* BuildDetailViewController.swift */; };
 		AC7E73D62107A91E00A76892 /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E73D52107A91E00A76892 /* AppTableViewCell.swift */; };
 		AC7E73D92107B83500A76892 /* BuildsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E73D82107B83500A76892 /* BuildsViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6236B661213C12940002D18F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AC0EBD7321090AEC00074EE1 /* BuildDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildDetailViewController.swift; sourceTree = "<group>"; };
 		AC7E73D52107A91E00A76892 /* AppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
 		AC7E73D82107B83500A76892 /* BuildsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildsViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				CC88C17521079AF400CD111C /* Utils.swift */,
+				6236B661213C12940002D18F /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				CC88C171210792FB00CD111C /* BuildsList.swift in Sources */,
 				AC0EBD7421090AEC00074EE1 /* BuildDetailViewController.swift in Sources */,
 				AC7E73D92107B83500A76892 /* BuildsViewController.swift in Sources */,
+				6236B662213C12940002D18F /* Constants.swift in Sources */,
 				CC88C173210793B700CD111C /* Configuration.swift in Sources */,
 				AC7E73DB210904B600A76892 /* BuildTableViewCell.swift in Sources */,
 				CC88C168210786BF00CD111C /* Models.swift in Sources */,

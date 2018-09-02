@@ -10,11 +10,11 @@ extension BuddyError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .responseError:
-            return "An error has occurred"
+            return Constants.Error.responseError
         case .noData:
-            return "No data fetched"
+            return Constants.Error.noData
         case .wrongUrl:
-            return "Unexpected URL creation exception"
+            return Constants.Error.wrongUrl
         }
     }
 }

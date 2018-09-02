@@ -35,7 +35,7 @@ class ChooseAppViewController: UIViewController {
             case .success(let response):
                 self.apps = response
             case .failure(let error):
-                print("error: \(error)")
+                print("Error: \(error)")
             }
         }
         

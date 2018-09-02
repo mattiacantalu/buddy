@@ -25,7 +25,7 @@ struct BuddyService {
 
         var request: URLRequest = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("Bearer \(configuration.token)", forHTTPHeaderField: "Authorization")
+        request.setValue("\(Constants.URL.authHeaderValue) \(configuration.token)", forHTTPHeaderField: Constants.URL.authHeader)
 
         let task = URLSession.shared.dataTask(with: request) { (responseData, urlResponse, responseError) in
             DispatchQueue.main.async {
