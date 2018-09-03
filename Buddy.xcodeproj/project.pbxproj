@@ -28,6 +28,7 @@
 		CC88C17621079AF400CD111C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC88C17521079AF400CD111C /* Utils.swift */; };
 		CCD35884213D5F54001563DE /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD35883213D5F54001563DE /* Dispatcher.swift */; };
 		CCD35886213D68C3001563DE /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD35885213D68C3001563DE /* Service.swift */; };
+		CCD3588A213D7014001563DE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD35889213D7014001563DE /* Session.swift */; };
 		CCDA21032107D3840058EAED /* buddyLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDA21022107D3830058EAED /* buddyLogo.png */; };
 		CCFDE55D213D569400331414 /* BuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFDE55C213D569400331414 /* BuddyTests.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		CC88C17521079AF400CD111C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		CCD35883213D5F54001563DE /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		CCD35885213D68C3001563DE /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		CCD35889213D7014001563DE /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		CCDA21022107D3830058EAED /* buddyLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddyLogo.png; sourceTree = "<group>"; };
 		CCFDE55A213D569400331414 /* BuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCFDE55C213D569400331414 /* BuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyTests.swift; sourceTree = "<group>"; };
@@ -164,11 +166,11 @@
 			isa = PBXGroup;
 			children = (
 				CC88C165210783D300CD111C /* BuddyService.swift */,
-				CC88C167210786BF00CD111C /* Models.swift */,
 				CC88C16921078EF900CD111C /* BuddyError.swift */,
-				CC88C172210793B700CD111C /* Configuration.swift */,
-				CCD35885213D68C3001563DE /* Service.swift */,
-				CCD35883213D5F54001563DE /* Dispatcher.swift */,
+				CCD3588B213D7035001563DE /* Configurator */,
+				CCD35887213D6FFD001563DE /* Service */,
+				CCD35888213D7006001563DE /* Session */,
+				CCD3588C213D7043001563DE /* Model */,
 				CC88C16B210792DC00CD111C /* Commands */,
 			);
 			path = API;
@@ -192,6 +194,39 @@
 				6236B663213C139C0002D18F /* URL+QueryItems.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		CCD35887213D6FFD001563DE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CCD35885213D68C3001563DE /* Service.swift */,
+				CCD35883213D5F54001563DE /* Dispatcher.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CCD35888213D7006001563DE /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				CCD35889213D7014001563DE /* Session.swift */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		CCD3588B213D7035001563DE /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				CC88C172210793B700CD111C /* Configuration.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		CCD3588C213D7043001563DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC88C167210786BF00CD111C /* Models.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CCFDE55B213D569400331414 /* BuddyTests */ = {
@@ -316,6 +351,7 @@
 				6236B662213C12940002D18F /* Constants.swift in Sources */,
 				CC88C173210793B700CD111C /* Configuration.swift in Sources */,
 				AC7E73DB210904B600A76892 /* BuildTableViewCell.swift in Sources */,
+				CCD3588A213D7014001563DE /* Session.swift in Sources */,
 				CC88C168210786BF00CD111C /* Models.swift in Sources */,
 				CC88C17621079AF400CD111C /* Utils.swift in Sources */,
 				CC88C170210792FB00CD111C /* Build.swift in Sources */,

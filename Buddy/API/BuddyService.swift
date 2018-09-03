@@ -7,6 +7,7 @@ enum Result<Value> {
 
 struct BuddyService {
     private let configuration: Configuration
+
     var baseURL: URL? {
         return URL(string: configuration.baseUrl)
     }

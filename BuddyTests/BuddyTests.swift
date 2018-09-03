@@ -15,8 +15,8 @@ class BuddyTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        let conf = Configuration(token: "yN9KTZm4s8m5R7X1YcvZxRH7wQ1xLjgp8ibCd11lf4Ne4DJnJdsWEqbYZDrP8vH7OFG8rzHfMDvAIbToGxsQGAxhWUs6C0Sd7A4WGmPCSYDHq1dIUE3kXjyesVNv",
-                                 urlString: "https://api.buddybuild.com/v1")
+        let service = Service(session: <#T##URLSession#>, dispatcher: <#T##Dispatcher#>)
+        let conf = Configuration(token: <#T##String#>, baseUrl: <#T##String#>, service: <#T##Service#>)
         service = BuddyService(configuration: conf)
     }
     
