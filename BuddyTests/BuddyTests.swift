@@ -11,27 +11,33 @@ import XCTest
 
 class BuddyTests: XCTestCase {
 
-    var bService: BuddyService?
-
     override func setUp() {
         super.setUp()
-        var service = Service(session: MockedSession(json: ""),
+    }
+
+    func testBuildsList() {
+        BuddyService
+            .load(json: "builds_list")
+            .getBuilds(appId: "172aee62ca0774b1d0a9c60c",
+                       completion: { result in
+            switch result {
+            case .success(let response):
+                XCTAssertNotNil(response)
+            case .failure(let error):
+                XCTFail("Should be success! Got: \(error)")
+            }
+        })
+    }
+}
+
+private extension BuddyService {
+    static func load(json: String) -> BuddyService {
+        let service = Service(session: MockedSession(json: json),
                               dispatcher: SyncDispatcher())
         let config = Configuration(token: "abc123",
                                    baseUrl: "www.sample.com",
                                    service: service)
-        bService = BuddyService(configuration: config)
-    }
-
-    func testExample() {
-//        service?.getApps(completion: { result in
-//            switch result {
-//            case .success(let response):
-//                XCTAssertNotNil(response)
-//            case .failure(let error):
-//                print("Error: \(error)")
-//            }
-//        })
+        return BuddyService(configuration: config)
     }
 }
 

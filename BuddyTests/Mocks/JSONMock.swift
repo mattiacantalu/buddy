@@ -2,15 +2,8 @@ import Foundation
 
 final class JSONMock {
 
-    static func loadJson(fromResource resource: String, ofType type: String = "json") -> Any? {
-        do {
-            guard let mockData = JSONMock.loadData(fromResource: resource, ofType: type) else {
-                return nil
-            }
-            return try JSONSerialization.jsonObject(with: mockData, options: [])
-        } catch {
-            return nil
-        }
+    static func loadJson(fromResource resource: String, ofType type: String = "json") -> Data? {
+            return JSONMock.loadData(fromResource: resource, ofType: type)
     }
 
     private static func loadData(fromResource resource: String, ofType type: String = "json") -> Data? {
@@ -19,7 +12,8 @@ final class JSONMock {
         }
         do {
             return try Data(contentsOf: URL(fileURLWithPath: path))
-        } catch {
+        } catch let e {
+            print(e)
             return nil
         }
     }

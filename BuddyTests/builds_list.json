@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "27a1c5f4d561a500012e5a2e",
+    "app_id": "172aee62ca0774b1d0a9c60c",
+    "build_number": 1221,
+    "build_status": "failed",
+    "commit_info": {
+      "author": "Developer 1",
+      "branch": "master",
+      "commit_sha": "142237443348qbaff75336ca9ada2372d8529686",
+      "html_url": "https://github.com/example/app/commit/1ad263853b485baff75336ca9ada2372d8529686",
+      "message": "Remove failing retry logic.",
+      "tags": []
+    },
+    "created_at": "2017-08-31T08:08:25.432Z",
+    "finished": true,
+    "finished_at": "2017-08-31T08:35:16.728Z",
+    "links": {
+      "download": [],
+      "install": []
+    },
+    "repo_url": "https://github.com/example/app.git",
+    "started_at": "2017-08-31T08:08:26.381Z",
+    "test_summary": {}
+  },
+  {
+    "_id": "29a1d379ec90540001c7eef9",
+    "app_id": "172aee62ca0774b1d0a9c60c",
+    "build_number": 1220,
+    "build_status": "success",
+    "commit_info": {
+      "author": "Developer 2",
+      "branch": "dev-2/fix-crash",
+      "commit_sha": "182e3f421977e42a8d83a2dq1650cb4d199d2aaa",
+      "html_url": "https://github.com/example/app/commit/18c26f321577442d8683q2d81651cb4d199d2aaa",
+      "message": "fix crash",
+      "tags": []
+    },
+    "created_at": "2017-08-31T08:06:17.728Z",
+    "finished": true,
+    "finished_at": "2017-08-31T08:14:56.381Z",
+    "links": {
+      "download": [],
+      "install": []
+    },
+    "repo_url": "https://github.com/example/app.git",
+    "started_at": "2017-08-31T08:06:20.432Z",
+    "test_summary": {}
+  }
+]

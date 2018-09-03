@@ -17,7 +17,7 @@ struct MockedSession: SessionProtocol {
                                    expectedContentLength: 0,
                                    textEncodingName: nil)
 
-        guard let data = JSONMock.loadJson(fromResource: json) as? Data else {
+        guard let data = JSONMock.loadJson(fromResource: json) else {
             completion(nil, response, MockedSessionError.badJSON)
             return
         }

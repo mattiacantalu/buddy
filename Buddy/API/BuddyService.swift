@@ -28,7 +28,9 @@ struct BuddyService {
         request.httpMethod = "GET"
         request.setValue("\(Constants.URL.authHeaderValue) \(configuration.token)", forHTTPHeaderField: Constants.URL.authHeader)
 
-        configuration.service.performTask(with: request) { (responseData, urlResponse, responseError) in
+        configuration
+            .service
+            .performTask(with: request) { (responseData, urlResponse, responseError) in
             completion(self.decode(response: responseData,
                                    map: map,
                                    error: responseError))

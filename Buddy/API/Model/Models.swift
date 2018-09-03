@@ -12,7 +12,7 @@ struct AppResponse: Codable {
 
 struct BuildResponse: Codable {
     let id: String
-    let name: String
+    let name: String?
     let buildNumber: Int
     let date: String?
     let commit: CommitInfoReponse

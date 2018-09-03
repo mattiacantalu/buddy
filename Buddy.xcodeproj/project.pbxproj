@@ -31,6 +31,7 @@
 		CCD3588A213D7014001563DE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD35889213D7014001563DE /* Session.swift */; };
 		CCD3588E213D746D001563DE /* JSONMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD3588D213D746D001563DE /* JSONMock.swift */; };
 		CCD35890213D7803001563DE /* MockedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD3588F213D7803001563DE /* MockedSession.swift */; };
+		CCD35893213D7BC4001563DE /* builds_list.json in Resources */ = {isa = PBXBuildFile; fileRef = CCD35892213D7BC4001563DE /* builds_list.json */; };
 		CCDA21032107D3840058EAED /* buddyLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDA21022107D3830058EAED /* buddyLogo.png */; };
 		CCFDE55D213D569400331414 /* BuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFDE55C213D569400331414 /* BuddyTests.swift */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		CCD35889213D7014001563DE /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		CCD3588D213D746D001563DE /* JSONMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMock.swift; sourceTree = "<group>"; };
 		CCD3588F213D7803001563DE /* MockedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedSession.swift; sourceTree = "<group>"; };
+		CCD35892213D7BC4001563DE /* builds_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = builds_list.json; sourceTree = "<group>"; };
 		CCDA21022107D3830058EAED /* buddyLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddyLogo.png; sourceTree = "<group>"; };
 		CCFDE55A213D569400331414 /* BuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCFDE55C213D569400331414 /* BuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyTests.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			children = (
 				CCD35891213D7814001563DE /* Mocks */,
 				CCFDE55C213D569400331414 /* BuddyTests.swift */,
+				CCD35892213D7BC4001563DE /* builds_list.json */,
 				CCFDE55E213D569400331414 /* Info.plist */,
 			);
 			path = BuddyTests;
@@ -344,6 +347,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCD35893213D7BC4001563DE /* builds_list.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
