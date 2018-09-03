@@ -29,6 +29,8 @@
 		CCD35884213D5F54001563DE /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD35883213D5F54001563DE /* Dispatcher.swift */; };
 		CCD35886213D68C3001563DE /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD35885213D68C3001563DE /* Service.swift */; };
 		CCD3588A213D7014001563DE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD35889213D7014001563DE /* Session.swift */; };
+		CCD3588E213D746D001563DE /* JSONMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD3588D213D746D001563DE /* JSONMock.swift */; };
+		CCD35890213D7803001563DE /* MockedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD3588F213D7803001563DE /* MockedSession.swift */; };
 		CCDA21032107D3840058EAED /* buddyLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDA21022107D3830058EAED /* buddyLogo.png */; };
 		CCFDE55D213D569400331414 /* BuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFDE55C213D569400331414 /* BuddyTests.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,8 @@
 		CCD35883213D5F54001563DE /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		CCD35885213D68C3001563DE /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		CCD35889213D7014001563DE /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		CCD3588D213D746D001563DE /* JSONMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMock.swift; sourceTree = "<group>"; };
+		CCD3588F213D7803001563DE /* MockedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedSession.swift; sourceTree = "<group>"; };
 		CCDA21022107D3830058EAED /* buddyLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddyLogo.png; sourceTree = "<group>"; };
 		CCFDE55A213D569400331414 /* BuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCFDE55C213D569400331414 /* BuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyTests.swift; sourceTree = "<group>"; };
@@ -229,9 +233,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		CCD35891213D7814001563DE /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				CCD3588D213D746D001563DE /* JSONMock.swift */,
+				CCD3588F213D7803001563DE /* MockedSession.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		CCFDE55B213D569400331414 /* BuddyTests */ = {
 			isa = PBXGroup;
 			children = (
+				CCD35891213D7814001563DE /* Mocks */,
 				CCFDE55C213D569400331414 /* BuddyTests.swift */,
 				CCFDE55E213D569400331414 /* Info.plist */,
 			);
@@ -366,7 +380,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCD35890213D7803001563DE /* MockedSession.swift in Sources */,
 				CCFDE55D213D569400331414 /* BuddyTests.swift in Sources */,
+				CCD3588E213D746D001563DE /* JSONMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
