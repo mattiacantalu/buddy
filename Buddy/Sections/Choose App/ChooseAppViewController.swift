@@ -28,7 +28,7 @@ class ChooseAppViewController: UIViewController {
         super.viewDidLoad()
 
         let config = Configuration(token: Constant.token,
-                                   urlString: Constant.baseUrl)
+                                   baseUrl: Constant.baseUrl)
         let buddy = BuddyService(configuration: config)
         buddy.getApps { result in
             switch result {

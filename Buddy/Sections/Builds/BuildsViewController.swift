@@ -54,7 +54,7 @@ final class BuildsViewController: UIViewController {
             return
         }
         let config = Configuration(token: Constant.token,
-                                   urlString: Constant.baseUrl)
+                                   baseUrl: Constant.baseUrl)
         let buddy = BuddyService(configuration: config)
         buddy.getBuilds(appId: app.id,
                         limitTo: 50) { result in

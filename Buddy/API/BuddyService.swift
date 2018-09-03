@@ -8,7 +8,7 @@ enum Result<Value> {
 struct BuddyService {
     private let configuration: Configuration
     var baseURL: URL? {
-        return URL(string: configuration.urlString)
+        return URL(string: configuration.baseUrl)
     }
 
     init(configuration: Configuration) {
@@ -27,15 +27,11 @@ struct BuddyService {
         request.httpMethod = "GET"
         request.setValue("\(Constants.URL.authHeaderValue) \(configuration.token)", forHTTPHeaderField: Constants.URL.authHeader)
 
-        let task = URLSession.shared.dataTask(with: request) { (responseData, urlResponse, responseError) in
-            DispatchQueue.main.async {
-                completion(self.decode(response: responseData,
-                                       map: map,
-                                       error: responseError))
-            }
+        configuration.service.performTask(with: request) { (responseData, urlResponse, responseError) in
+            completion(self.decode(response: responseData,
+                                   map: map,
+                                   error: responseError))
         }
-
-        task.resume()
     }
 
     private func decode<T: Decodable>(response: Data?,
