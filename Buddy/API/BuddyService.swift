@@ -25,7 +25,7 @@ struct BuddyService {
         }
 
         var request: URLRequest = URLRequest(url: url)
-        request.httpMethod = "GET"
+        request.httpMethod = Constants.URL.httpMethod
         request.setValue("\(Constants.URL.authHeaderValue) \(configuration.token)", forHTTPHeaderField: Constants.URL.authHeader)
 
         configuration

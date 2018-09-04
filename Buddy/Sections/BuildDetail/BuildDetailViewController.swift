@@ -20,11 +20,15 @@ final class BuildDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = build?.tag ?? Constants.unknown
+        reloadNavigationBar()
         
         versionLabel?.text = "\(Constants.build) \(build?.tag ?? Constants.unknown)"
         authorLabel?.text = "\(Constants.author) \(build?.commit.author ?? Constants.noName)"
         summaryLabel?.text = "\(Constants.summary) \(build?.commit.message ?? Constants.noMessage)"
+    }
+
+    private func reloadNavigationBar() {
+        navigationItem.title = build?.tag ?? Constants.unknown
     }
 }
 

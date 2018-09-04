@@ -1,7 +1,7 @@
 import XCTest
 @testable import Buddy
 
-class BuddyTests: XCTestCase {
+class ReponseTests: XCTestCase {
 
     override func setUp() {
         super.setUp()

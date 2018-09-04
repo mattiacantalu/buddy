@@ -1,13 +1,13 @@
 import UIKit
 
-private struct Constant {
-    static let token = "yN9KTZm4s8m5R7X1YcvZxRH7wQ1xLjgp8ibCd11lf4Ne4DJnJdsWEqbYZDrP8vH7OFG8rzHfMDvAIbToGxsQGAxhWUs6C0Sd7A4WGmPCSYDHq1dIUE3kXjyesVNv"
-    static let baseUrl = "https://api.buddybuild.com/v1"
-    static let appCellIdentifier = "AppCellIdentifier"
-    static let buildsSegueIdentifier = "BuildsStoryboardSegue"
-    
-    struct Section {
-        static let app = 0
+extension ChooseAppViewController {
+    private struct Constant {
+        static let appCellIdentifier = "AppCellIdentifier"
+        static let buildsSegueIdentifier = "BuildsStoryboardSegue"
+
+        struct Section {
+            static let app = 0
+        }
     }
 }
 
@@ -27,8 +27,8 @@ class ChooseAppViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let config = Configuration(token: Constant.token,
-                                   baseUrl: Constant.baseUrl)
+        let config = Configuration(token: ClientConstant.token,
+                                   baseUrl: ClientConstant.baseUrl)
         let buddy = BuddyService(configuration: config)
         buddy.getApps { result in
             switch result {
@@ -58,7 +58,6 @@ class ChooseAppViewController: UIViewController {
     }
 }
 
-// MARK: Callbacks
 extension ChooseAppViewController {
     private func buildAppCell(_ tableView: UITableView, indexPath: IndexPath) -> AppTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.appCellIdentifier) as? AppTableViewCell
@@ -76,7 +75,6 @@ extension ChooseAppViewController {
     }
 }
 
-// MARK: TableView methods
 extension ChooseAppViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfRowsCallbacks.first(where: { $0.0(section) })?.1() ?? 0

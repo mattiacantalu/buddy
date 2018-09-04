@@ -1,9 +1,7 @@
 import UIKit
 
 class BuildTableViewCell: UITableViewCell {
-    @IBOutlet weak var buildNumberLabel: UILabel?
-    @IBOutlet weak var appNameLabel: UILabel?
-    
+
     var build: BuildResponse? {
         didSet {
             configureBuild(build)
@@ -11,7 +9,9 @@ class BuildTableViewCell: UITableViewCell {
     }
     
     private func configureBuild(_ build: BuildResponse?) {
-        appNameLabel?.text = build?.name
-        buildNumberLabel?.text = build.flatMap({ "(\($0.buildNumber))" })
+        let name = build?.name ?? ""
+        let buildNumber = build.flatMap({ "(\($0.buildNumber))" }) ?? ""
+        textLabel?.text = "\(name) \(buildNumber)"
+        detailTextLabel?.text = "\(build?.status ?? .unknown)"
     }
 }

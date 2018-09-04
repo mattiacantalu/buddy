@@ -1,13 +1,13 @@
 import UIKit
 
-private struct Constant {
-    static let token = "yN9KTZm4s8m5R7X1YcvZxRH7wQ1xLjgp8ibCd11lf4Ne4DJnJdsWEqbYZDrP8vH7OFG8rzHfMDvAIbToGxsQGAxhWUs6C0Sd7A4WGmPCSYDHq1dIUE3kXjyesVNv"
-    static let baseUrl = "https://api.buddybuild.com/v1"
-    static let buildCellIdentifier = "BuildCellIdentifier"
-    static let buildDetailSegue = "BuildDetailSegue"
-    
-    struct Section {
-        static let build = 0
+extension BuildsViewController {
+    private struct Constant {
+        static let buildCellIdentifier = "BuildCellIdentifier"
+        static let buildDetailSegue = "BuildDetailSegue"
+
+        struct Section {
+            static let build = 0
+        }
     }
 }
 
@@ -53,18 +53,17 @@ final class BuildsViewController: UIViewController {
         guard let app = app else {
             return
         }
-        let config = Configuration(token: Constant.token,
-                                   baseUrl: Constant.baseUrl)
+        let config = Configuration(token: ClientConstant.token,
+                                   baseUrl: ClientConstant.baseUrl)
         let buddy = BuddyService(configuration: config)
         buddy.getBuilds(appId: app.id,
-                        limitTo: 50) { result in
+                        size: 50) { result in
             switch result {
             case .success(let response):
                 self.builds = response
             case .failure(let error):
                 print("error: \(error)")
             }
-            
         }
     }
     
@@ -75,7 +74,6 @@ final class BuildsViewController: UIViewController {
     }
 }
 
-// MARK: Callbacks
 extension BuildsViewController {
     private func buildBuildCell(tableView: UITableView, indexPath: IndexPath) -> BuildTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.buildCellIdentifier) as? BuildTableViewCell
@@ -93,7 +91,6 @@ extension BuildsViewController {
     }
 }
 
-// MARK: TableView methods
 extension BuildsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfRowsCallbacks.first(where: { $0.0(section) })?.1() ?? 0
