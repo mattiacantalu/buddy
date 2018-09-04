@@ -32,6 +32,7 @@
 		CCD3588E213D746D001563DE /* JSONMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD3588D213D746D001563DE /* JSONMock.swift */; };
 		CCD35890213D7803001563DE /* MockedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD3588F213D7803001563DE /* MockedSession.swift */; };
 		CCD35893213D7BC4001563DE /* builds_list.json in Resources */ = {isa = PBXBuildFile; fileRef = CCD35892213D7BC4001563DE /* builds_list.json */; };
+		CCD35895213EC009001563DE /* build.json in Resources */ = {isa = PBXBuildFile; fileRef = CCD35894213EC009001563DE /* build.json */; };
 		CCDA21032107D3840058EAED /* buddyLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDA21022107D3830058EAED /* buddyLogo.png */; };
 		CCFDE55D213D569400331414 /* BuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFDE55C213D569400331414 /* BuddyTests.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		CCD3588D213D746D001563DE /* JSONMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMock.swift; sourceTree = "<group>"; };
 		CCD3588F213D7803001563DE /* MockedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedSession.swift; sourceTree = "<group>"; };
 		CCD35892213D7BC4001563DE /* builds_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = builds_list.json; sourceTree = "<group>"; };
+		CCD35894213EC009001563DE /* build.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = build.json; sourceTree = "<group>"; };
 		CCDA21022107D3830058EAED /* buddyLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddyLogo.png; sourceTree = "<group>"; };
 		CCFDE55A213D569400331414 /* BuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCFDE55C213D569400331414 /* BuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyTests.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				CCD35891213D7814001563DE /* Mocks */,
 				CCFDE55C213D569400331414 /* BuddyTests.swift */,
 				CCD35892213D7BC4001563DE /* builds_list.json */,
+				CCD35894213EC009001563DE /* build.json */,
 				CCFDE55E213D569400331414 /* Info.plist */,
 			);
 			path = BuddyTests;
@@ -347,6 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCD35895213EC009001563DE /* build.json in Resources */,
 				CCD35893213D7BC4001563DE /* builds_list.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

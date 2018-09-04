@@ -23,10 +23,33 @@ class BuddyTests: XCTestCase {
             switch result {
             case .success(let response):
                 XCTAssertNotNil(response)
+                XCTAssertEqual(response.count, 2)
+                XCTAssertEqual(response.first?.buildNumber, 1221)
+                XCTAssertEqual(response.first?.commit.author, "Developer 1")
+                XCTAssertEqual(response.first?.links.install.count, 0)
             case .failure(let error):
                 XCTFail("Should be success! Got: \(error)")
             }
         })
+    }
+
+    func testBuild() {
+        BuddyService
+            .load(json: "build")
+            .getBuild(number: "123",
+                       completion: { result in
+                        switch result {
+                        case .success(let response):
+                            XCTAssertNotNil(response)
+                            XCTAssertEqual(response.buildNumber, 2)
+                            XCTAssertEqual(response.links.install.count, 1)
+                            XCTAssertEqual(response.links.install.first?.name, "m2048 - Release")
+                            XCTAssertEqual(response.status, BuildStatus.failed)
+                            XCTAssertNil(response.tag)
+                        case .failure(let error):
+                            XCTFail("Should be success! Got: \(error)")
+                        }
+            })
     }
 }
 
