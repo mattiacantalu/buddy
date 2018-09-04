@@ -1,11 +1,3 @@
-//
-//  BuddyTests.swift
-//  Buddy
-//
-//  Created by Mattia Cantalù on 03/09/2018.
-//  Copyright © 2018 YOOX NET-A-PORTER GROUP S.p.A. All rights reserved.
-//  
-
 import XCTest
 @testable import Buddy
 
@@ -18,7 +10,7 @@ class BuddyTests: XCTestCase {
     func testBuildsList() {
         BuddyService
             .load(json: "builds_list")
-            .getBuilds(appId: "172aee62ca0774b1d0a9c60c",
+            .getBuilds(appId: "",
                        completion: { result in
             switch result {
             case .success(let response):
@@ -36,7 +28,7 @@ class BuddyTests: XCTestCase {
     func testBuild() {
         BuddyService
             .load(json: "build")
-            .getBuild(number: "123",
+            .getBuild(number: "",
                        completion: { result in
                         switch result {
                         case .success(let response):
