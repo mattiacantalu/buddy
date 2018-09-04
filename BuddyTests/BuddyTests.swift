@@ -51,6 +51,22 @@ class BuddyTests: XCTestCase {
                         }
             })
     }
+
+    func testApps() {
+        BuddyService
+            .load(json: "apps")
+            .getApps(completion: { result in
+                        switch result {
+                        case .success(let response):
+                            XCTAssertNotNil(response)
+                            XCTAssertEqual(response.count, 2)
+                            XCTAssertEqual(response.first?.name, "2048 iOS App")
+                            XCTAssertEqual(response.first?.id, "58a4e07838704cb2eacd7ce4")
+                        case .failure(let error):
+                            XCTFail("Should be success! Got: \(error)")
+                        }
+            })
+    }
 }
 
 private extension BuddyService {

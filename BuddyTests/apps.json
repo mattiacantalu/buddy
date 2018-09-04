@@ -1,0 +1,12 @@
+[
+  {
+    "_id": "58a4e07838704cb2eacd7ce4",
+    "app_name": "2048 iOS App",
+    "platform": "ios"
+  },
+  {
+    "_id": "58a4e07838704cb2eacd7ce6",
+    "app_name": "2048 Android App",
+    "platform": "android"
+  }
+]
