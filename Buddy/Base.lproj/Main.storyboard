@@ -153,7 +153,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="I3w-6K-nUc">
-                                <rect key="frame" x="0.0" y="64" width="375" height="490.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="571.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buddyLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="TPD-47-XF2">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
@@ -164,8 +164,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: success" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dne-jy-Bgt">
+                                        <rect key="frame" x="0.0" y="361.5" width="375" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZS-yh-U8A">
+                                        <rect key="frame" x="0.0" y="402" width="375" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60e-8l-yrx">
-                                        <rect key="frame" x="0.0" y="361.5" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="442.5" width="375" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Install"/>
                                         <connections>
@@ -173,13 +185,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GoQ-Ja-0qS">
-                                        <rect key="frame" x="0.0" y="429.5" width="375" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="510.5" width="375" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MF2-hF-57X">
-                                        <rect key="frame" x="0.0" y="470" width="375" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="551" width="375" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -198,7 +210,9 @@
                     <connections>
                         <outlet property="authorLabel" destination="GoQ-Ja-0qS" id="Ncy-6D-cFo"/>
                         <outlet property="installButton" destination="60e-8l-yrx" id="NlJ-44-b6c"/>
+                        <outlet property="statusLabel" destination="Dne-jy-Bgt" id="TAX-nl-y3Z"/>
                         <outlet property="summaryLabel" destination="MF2-hF-57X" id="P8e-gi-36s"/>
+                        <outlet property="tagLabel" destination="7ZS-yh-U8A" id="xfe-JN-7hg"/>
                         <outlet property="versionLabel" destination="aNB-qH-RNx" id="lUv-E7-lMh"/>
                     </connections>
                 </viewController>
