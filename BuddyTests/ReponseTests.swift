@@ -8,9 +8,19 @@ class ReponseTests: XCTestCase {
     }
 
     func testBuildsList() {
-        BuddyService
-            .load(json: "builds_list")
-            .getBuilds(appId: "",
+        let session = MockedSession(json: "builds_list") { _, response, _ in
+            XCTAssertEqual("www.sample.com/apps/999/builds?status=success&limit=5", response?.url?.absoluteString)
+        }
+        let service = Service(session: session,
+            dispatcher: SyncDispatcher())
+        let config = Configuration(token: "abc123",
+                                   baseUrl: "www.sample.com",
+                                   service: service)
+
+        BuddyService(configuration: config)
+            .getBuilds(appId: "999",
+                       size: 5,
+                       status: .success,
                        completion: { result in
             switch result {
             case .success(let response):
@@ -25,10 +35,45 @@ class ReponseTests: XCTestCase {
         })
     }
 
+
+    func testBuildsListWithDefaultValues() {
+        let session = MockedSession(json: "builds_list") { _, response, _ in
+            XCTAssertEqual("www.sample.com/apps/999/builds?limit=10", response?.url?.absoluteString)
+        }
+        let service = Service(session: session,
+                              dispatcher: SyncDispatcher())
+        let config = Configuration(token: "abc123",
+                                   baseUrl: "www.sample.com",
+                                   service: service)
+
+        BuddyService(configuration: config)
+            .getBuilds(appId: "999",
+                       completion: { result in
+                        switch result {
+                        case .success(let response):
+                            XCTAssertNotNil(response)
+                            XCTAssertEqual(response.count, 2)
+                            XCTAssertEqual(response.first?.buildNumber, 1221)
+                            XCTAssertEqual(response.first?.commit.author, "Developer 1")
+                            XCTAssertEqual(response.first?.links.install.count, 0)
+                        case .failure(let error):
+                            XCTFail("Should be success! Got: \(error)")
+                        }
+            })
+    }
+
     func testBuild() {
-        BuddyService
-            .load(json: "build")
-            .getBuild(number: "",
+        let session = MockedSession(json: "build") { _, response, _ in
+            XCTAssertEqual("www.sample.com/builds/abc123", response?.url?.absoluteString)
+        }
+        let service = Service(session: session,
+            dispatcher: SyncDispatcher())
+        let config = Configuration(token: "abc123",
+                                   baseUrl: "www.sample.com",
+                                   service: service)
+
+        BuddyService(configuration: config)
+            .getBuild(number: "abc123",
                        completion: { result in
                         switch result {
                         case .success(let response):
@@ -45,9 +90,17 @@ class ReponseTests: XCTestCase {
     }
 
     func testApps() {
-        BuddyService
-            .load(json: "apps")
-            .getApps(completion: { result in
+        let session = MockedSession(json: "apps") { _, response, _ in
+            XCTAssertEqual("www.sample.com/apps", response?.url?.absoluteString)
+        }
+        let service = Service(session: session,
+                              dispatcher: SyncDispatcher())
+        let config = Configuration(token: "abc123",
+                                   baseUrl: "www.sample.com",
+                                   service: service)
+
+        BuddyService(configuration: config)
+                .getApps(completion: { result in
                         switch result {
                         case .success(let response):
                             XCTAssertNotNil(response)
@@ -61,14 +114,4 @@ class ReponseTests: XCTestCase {
     }
 }
 
-private extension BuddyService {
-    static func load(json: String) -> BuddyService {
-        let service = Service(session: MockedSession(json: json),
-                              dispatcher: SyncDispatcher())
-        let config = Configuration(token: "abc123",
-                                   baseUrl: "www.sample.com",
-                                   service: service)
-        return BuddyService(configuration: config)
-    }
-}
 

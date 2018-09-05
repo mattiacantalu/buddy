@@ -3,6 +3,7 @@ import Foundation
 
 struct MockedSession: SessionProtocol {
     let json: String
+    let completionResponse: ((Data?, URLResponse?, Error?) -> Void)
 
     func dataTask(with request: URLRequest,
                   completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
@@ -22,6 +23,7 @@ struct MockedSession: SessionProtocol {
             return
         }
 
+        completionResponse(data, response, nil)
         completion(data, response, nil)
     }
 }
@@ -29,4 +31,5 @@ struct MockedSession: SessionProtocol {
 enum MockedSessionError: Error {
     case badURL
     case badJSON
+    case invalidResponse
 }
