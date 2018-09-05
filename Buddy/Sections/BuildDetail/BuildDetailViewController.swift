@@ -15,13 +15,15 @@ final class BuildDetailViewController: UIViewController {
     @IBOutlet private weak var versionLabel: UILabel?
     @IBOutlet private weak var authorLabel: UILabel?
     @IBOutlet private weak var summaryLabel: UILabel?
-    
+    @IBOutlet private weak var installButton: UIButton?
+
     var build: BuildResponse?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         reloadNavigationBar()
-        
+        loadButton()
+
         versionLabel?.text = "\(Constants.build) \(build?.tag ?? Constants.unknown)"
         authorLabel?.text = "\(Constants.author) \(build?.commit.author ?? Constants.noName)"
         summaryLabel?.text = "\(Constants.summary) \(build?.commit.message ?? Constants.noMessage)"
@@ -29,6 +31,10 @@ final class BuildDetailViewController: UIViewController {
 
     private func reloadNavigationBar() {
         navigationItem.title = build?.tag ?? Constants.unknown
+    }
+
+    private func loadButton() {
+        installButton?.isEnabled = build?.download != nil ? true : false
     }
 }
 

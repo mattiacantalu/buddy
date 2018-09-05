@@ -197,6 +197,7 @@
                     </view>
                     <connections>
                         <outlet property="authorLabel" destination="GoQ-Ja-0qS" id="Ncy-6D-cFo"/>
+                        <outlet property="installButton" destination="60e-8l-yrx" id="NlJ-44-b6c"/>
                         <outlet property="summaryLabel" destination="MF2-hF-57X" id="P8e-gi-36s"/>
                         <outlet property="versionLabel" destination="aNB-qH-RNx" id="lUv-E7-lMh"/>
                     </connections>

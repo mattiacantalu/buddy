@@ -12,6 +12,6 @@ class BuildTableViewCell: UITableViewCell {
         let name = build?.name ?? ""
         let buildNumber = build.flatMap({ "(\($0.buildNumber))" }) ?? ""
         textLabel?.text = "\(name) \(buildNumber)"
-        detailTextLabel?.text = "\(build?.status ?? .unknown)"
+        detailTextLabel?.text = build?.status?.rawValue ?? "unknown"
     }
 }

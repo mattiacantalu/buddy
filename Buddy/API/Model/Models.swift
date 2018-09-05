@@ -20,8 +20,8 @@ struct BuildResponse: Codable {
     private let buildStatus: String
     private let tags: [String]?
 
-    var status: BuildStatus {
-        return BuildStatus(rawValue: buildStatus) ?? .unknown
+    var status: BuildStatus? {
+        return BuildStatus(rawValue: buildStatus)
     }
     
     var tag: String? {
@@ -74,5 +74,4 @@ enum BuildStatus: String {
     case cancelled
     case running
     case failed
-    case unknown
 }
