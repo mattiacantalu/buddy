@@ -18,29 +18,49 @@ final class BuildDetailViewController: UIViewController {
     @IBOutlet private weak var authorLabel: UILabel?
     @IBOutlet private weak var summaryLabel: UILabel?
     @IBOutlet private weak var statusLabel: UILabel?
-    @IBOutlet weak var tagLabel: UILabel!
+    @IBOutlet private weak var tagLabel: UILabel?
     @IBOutlet private weak var installButton: UIButton?
 
-    var build: BuildResponse?
-    
+    private var build: BuildResponse? {
+        didSet {
+            reloadView(build)
+        }
+    }
+
+    var buildId: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        reloadNavigationBar()
-        loadButton()
+        getBuild()
+    }
+
+    private func getBuild() {
+        guard let buildId = buildId else {
+            return
+        }
+
+        let config = Configuration(token: ClientConstant.token,
+                                   baseUrl: ClientConstant.baseUrl)
+        let buddy = BuddyService(configuration: config)
+        buddy.getBuild(number: buildId) { result in
+            switch result {
+            case .success(let response):
+                self.build = response
+            case .failure(let error):
+                print("error: \(error)")
+            }
+        }
+    }
+
+    private func reloadView(_ build: BuildResponse?) {
+        navigationItem.title = build?.tag ?? Constants.unknown
+        installButton?.isEnabled = build?.download != nil ? true : false
 
         versionLabel?.text = "\(Constants.build) \(build?.buildNumber ?? 0)"
         authorLabel?.text = "\(Constants.author) \(build?.commit.author ?? Constants.noName)"
         statusLabel?.text = "\(Constants.status) \(build?.status?.rawValue ?? Constants.unknown)"
         tagLabel?.text = "\(Constants.tag) \(build?.tag ?? Constants.unknown)"
         summaryLabel?.text = "\(Constants.summary) \(build?.commit.message ?? Constants.noMessage)"
-    }
-
-    private func reloadNavigationBar() {
-        navigationItem.title = build?.tag ?? Constants.unknown
-    }
-
-    private func loadButton() {
-        installButton?.isEnabled = build?.download != nil ? true : false
     }
 }
 

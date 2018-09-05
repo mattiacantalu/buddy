@@ -41,8 +41,7 @@ final class BuildsViewController: UIViewController {
             let buildViewController = segue.destination as? BuildDetailViewController else {
                 return
         }
-        let build = builds?[index.row]
-        buildViewController.build = build
+        buildViewController.buildId = builds?[index.row].id
     }
     
     private func reloadNavigationBar() {
