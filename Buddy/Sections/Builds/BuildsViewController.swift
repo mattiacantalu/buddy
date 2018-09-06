@@ -52,11 +52,9 @@ final class BuildsViewController: UIViewController {
         guard let app = app else {
             return
         }
-        let config = Configuration(token: ClientConstant.token,
-                                   baseUrl: ClientConstant.baseUrl)
-        let buddy = BuddyService(configuration: config)
-        buddy.getBuilds(appId: app.id,
-                        size: 50) { result in
+
+        Buddy.service.getBuilds(appId: app.id,
+                                size: 50) { result in
             switch result {
             case .success(let response):
                 self.builds = response

@@ -39,10 +39,7 @@ final class BuildDetailViewController: UIViewController {
             return
         }
 
-        let config = Configuration(token: ClientConstant.token,
-                                   baseUrl: ClientConstant.baseUrl)
-        let buddy = BuddyService(configuration: config)
-        buddy.getBuild(number: buildId) { result in
+        Buddy.service.getBuild(number: buildId) { result in
             switch result {
             case .success(let response):
                 self.build = response

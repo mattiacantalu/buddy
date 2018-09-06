@@ -27,10 +27,7 @@ class ChooseAppViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let config = Configuration(token: ClientConstant.token,
-                                   baseUrl: ClientConstant.baseUrl)
-        let buddy = BuddyService(configuration: config)
-        buddy.getApps { result in
+        Buddy.service.getApps { result in
             switch result {
             case .success(let response):
                 self.apps = response
