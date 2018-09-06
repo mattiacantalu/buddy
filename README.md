@@ -4,7 +4,7 @@ Buddy is unofficial buddybuild client based on public APIs.
 
 I was looking for a buddybuild client for checking and downloading latest builds. So I started coding!
 
-It's written using clean code and function programming. 
+It's written using clean code and functional programming. 
 
 ✅ Unit tested
 
@@ -31,7 +31,7 @@ Customizing service and session:
 
     let buddy = BuddyService(configuration: configuration)
 
-## COMANDS
+## COMMANDS
 
     • func getApps(completion: @escaping ((Result<[AppResponse]>) -> Void))
 
