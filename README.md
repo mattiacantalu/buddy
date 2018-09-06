@@ -4,7 +4,9 @@ Buddy is unofficial buddybuild client based on public APIs.
 
 I was looking for a buddybuild client for checking and downloading latest builds. So I started coding!
 
-It's written using clean code and functional programming. 
+✅ Clean code
+
+✅ Functional programming
 
 ✅ Unit tested
 
@@ -12,8 +14,8 @@ It's written using clean code and functional programming.
 
 Using default values (easy way, no stress :))
 
-    let config = Configuration(token: "<token here>",
-                               baseUrl: "<base url here>")
+    let config = Configuration(token: "<token>",
+                               baseUrl: "<base url>")
 
     let buddy = BuddyService(configuration: config)
 
@@ -25,8 +27,8 @@ Customizing service and session:
     let service = Service(session: session,
                           dispatcher: dispatcher)
 
-    let configuration = Configuration(token: "<token here>",
-                                      baseUrl: "<base url here>",
+    let configuration = Configuration(token: "<token>",
+                                      baseUrl: "<base url>",
                                       service: service)
 
     let buddy = BuddyService(configuration: configuration)
@@ -42,3 +44,21 @@ Customizing service and session:
 
     • func getBuild(number: String,
                     completion: @escaping ((Result<BuildResponse>) -> Void))
+
+## IMPLEMENTATION
+
+    let buddy = BuddyService(configuration: <configuration>)
+
+    buddy.getBuilds(appId: app.id{ result in
+        switch result {
+        case .success(let response):
+            self.builds = response
+        case .failure(let error):
+            print("error: \(error)")
+        }
+    }
+
+# Requirements
+• Xcode 9+
+
+• Swift 4.1
