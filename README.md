@@ -1,6 +1,6 @@
 # buddy
 
-Buddy is unofficial buddybuild client based on public APIs.
+Buddy is unofficial (simple) buddybuild client based on public APIs.
 
 I was looking for a buddybuild client for checking and downloading latest builds. So I started coding!
 
@@ -10,7 +10,7 @@ I was looking for a buddybuild client for checking and downloading latest builds
 
 ✅ Unit tested
 
-## HOW IT WORKS
+## IMPLEMENTATION
 
 Using default values (easy way, no stress :))
 
@@ -58,7 +58,12 @@ Customizing service and session:
         }
     }
 
+
 # Requirements
 • Xcode 9+
 
 • Swift 4.1
+
+
+# Contributor
+• [Gioevi90](https://github.com/Gioevi90)
