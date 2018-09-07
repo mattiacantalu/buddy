@@ -10,7 +10,7 @@ I was looking for a buddybuild client for checking and downloading latest builds
 
 ✅ Unit tested
 
-## IMPLEMENTATION
+## Configuration
 
 Using default values (easy way, no stress :))
 
@@ -33,7 +33,7 @@ Customizing service and session:
 
     let buddy = BuddyService(configuration: configuration)
 
-## COMMANDS
+## Commands
 
     • func getApps(completion: @escaping ((Result<[AppResponse]>) -> Void))
 
