@@ -45,7 +45,7 @@ Customizing service and session:
     • func getBuild(number: String,
                     completion: @escaping ((Result<BuildResponse>) -> Void))
 
-## IMPLEMENTATION
+## Implementation
 
     let buddy = BuddyService(configuration: <configuration>)
 
