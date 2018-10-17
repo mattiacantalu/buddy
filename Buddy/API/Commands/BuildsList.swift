@@ -11,8 +11,10 @@ extension BuddyService {
             .appendingPathComponent(appId)
             .appendingPathComponent(Constants.URL.builds)
 
-        performTry({ try self.makeRequest(url?.appending(params: [Constants.URL.status: status?.rawValue,
-                                                                  Constants.URL.limit: size.stringValue]),
+        
+        performTry({ try self.makeRequest(url?
+                                            .appending(params: [Constants.URL.status: status?.rawValue])
+                                            .appending(params: [Constants.URL.limit: size.stringValue]),
                                           map: [BuildResponse].self,
                                           completion: completion) })
     }

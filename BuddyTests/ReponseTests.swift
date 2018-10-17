@@ -7,17 +7,26 @@ class ReponseTests: XCTestCase {
         super.setUp()
     }
 
-    func testBuildsList() {
-        let session = MockedSession(json: "builds_list") { _, response, _ in
-            XCTAssertEqual("www.sample.com/apps/999/builds?status=success&limit=5", response?.url?.absoluteString)
-        }
+    private func configure(session: SessionProtocol) -> Configuration {
         let service = Service(session: session,
-            dispatcher: SyncDispatcher())
-        let config = Configuration(token: "abc123",
+                              dispatcher: SyncDispatcher())
+        return Configuration(token: "abc123",
                                    baseUrl: "www.sample.com",
                                    service: service)
+    }
+    
+    func testBuildsList() {
+        guard let data = JSONMock.loadJson(fromResource: "builds_list") else {
+            XCTFail("JSON data error!")
+            return
+        }
+        let mockedSession = MockedSession(data: data,
+                                          response: nil,
+                                          error: nil) { request in
+            XCTAssertEqual("www.sample.com/apps/999/builds?status=success&limit=5", request.url?.absoluteString)
+        }
 
-        BuddyService(configuration: config)
+        BuddyService(configuration: configure(session: mockedSession))
             .getBuilds(appId: "999",
                        size: 5,
                        status: .success,
@@ -37,16 +46,17 @@ class ReponseTests: XCTestCase {
 
 
     func testBuildsListWithDefaultValues() {
-        let session = MockedSession(json: "builds_list") { _, response, _ in
-            XCTAssertEqual("www.sample.com/apps/999/builds?limit=10", response?.url?.absoluteString)
+        guard let data = JSONMock.loadJson(fromResource: "builds_list") else {
+            XCTFail("JSON data error!")
+            return
         }
-        let service = Service(session: session,
-                              dispatcher: SyncDispatcher())
-        let config = Configuration(token: "abc123",
-                                   baseUrl: "www.sample.com",
-                                   service: service)
+        let mockedSession = MockedSession(data: data,
+                                          response: nil,
+                                          error: nil) { request in
+            XCTAssertEqual("www.sample.com/apps/999/builds?limit=10", request.url?.absoluteString)
+        }
 
-        BuddyService(configuration: config)
+        BuddyService(configuration: configure(session: mockedSession))
             .getBuilds(appId: "999",
                        completion: { result in
                         switch result {
@@ -63,16 +73,17 @@ class ReponseTests: XCTestCase {
     }
 
     func testBuild() {
-        let session = MockedSession(json: "build") { _, response, _ in
-            XCTAssertEqual("www.sample.com/builds/abc123", response?.url?.absoluteString)
+        guard let data = JSONMock.loadJson(fromResource: "build") else {
+            XCTFail("JSON data error!")
+            return
         }
-        let service = Service(session: session,
-            dispatcher: SyncDispatcher())
-        let config = Configuration(token: "abc123",
-                                   baseUrl: "www.sample.com",
-                                   service: service)
+        let mockedSession = MockedSession(data: data,
+                                          response: nil,
+                                          error: nil) { request in
+            XCTAssertEqual("www.sample.com/builds/abc123", request.url?.absoluteString)
+        }
 
-        BuddyService(configuration: config)
+        BuddyService(configuration: configure(session: mockedSession))
             .getBuild(number: "abc123",
                        completion: { result in
                         switch result {
@@ -90,16 +101,17 @@ class ReponseTests: XCTestCase {
     }
 
     func testApps() {
-        let session = MockedSession(json: "apps") { _, response, _ in
-            XCTAssertEqual("www.sample.com/apps", response?.url?.absoluteString)
+        guard let data = JSONMock.loadJson(fromResource: "apps") else {
+            XCTFail("JSON data error!")
+            return
         }
-        let service = Service(session: session,
-                              dispatcher: SyncDispatcher())
-        let config = Configuration(token: "abc123",
-                                   baseUrl: "www.sample.com",
-                                   service: service)
+        let mockedSession = MockedSession(data: data,
+                                          response: nil,
+                                          error: nil) { request in
+            XCTAssertEqual("www.sample.com/apps", request.url?.absoluteString)
+        }
 
-        BuddyService(configuration: config)
+        BuddyService(configuration: configure(session: mockedSession))
                 .getApps(completion: { result in
                         switch result {
                         case .success(let response):
@@ -109,6 +121,55 @@ class ReponseTests: XCTestCase {
                             XCTAssertEqual(response.first?.id, "58a4e07838704cb2eacd7ce4")
                         case .failure(let error):
                             XCTFail("Should be success! Got: \(error)")
+                        }
+            })
+    }
+    
+    func testBuddyServiceShouldSuccess() {
+        guard let data = JSONMock.loadJson(fromResource: "builds_list") else {
+            XCTFail("JSON data error!")
+            return
+        }
+        let mockedSession = MockedSession.simulate(success: data) { request in
+            XCTAssertEqual("www.sample.com/apps/999/builds?status=success&limit=5", request.url?.absoluteString)
+        }
+        
+        BuddyService(configuration: configure(session: mockedSession))
+            .getBuilds(appId: "999",
+                       size: 5,
+                       status: .success,
+                       completion: { result in
+                        switch result {
+                        case .success(let response):
+                            XCTAssertNotNil(response)
+                            XCTAssertEqual(response.count, 2)
+                            XCTAssertEqual(response.first?.buildNumber, 1221)
+                            XCTAssertEqual(response.first?.commit.author, "Developer 1")
+                            XCTAssertEqual(response.first?.links.install.count, 0)
+                        case .failure(let error):
+                            XCTFail("Should be success! Got: \(error)")
+                        }
+            })
+    }
+    
+    func testBuddyServiceShouldFail() {
+        let mockedSession = MockedSession.simulate(failure: MockedSessionError.invalidResponse) { request in
+            XCTAssertEqual("www.sample.com/apps/999/builds?status=success&limit=5", request.url?.absoluteString)
+        }
+        
+        BuddyService(configuration: configure(session: mockedSession))
+            .getBuilds(appId: "999",
+                       size: 5,
+                       status: .success,
+                       completion: { result in
+                        switch result {
+                        case .success(_):
+                            XCTFail("Should be fail! Got success.")
+                        case .failure(let error):
+                            guard case MockedSessionError.invalidResponse = error else {
+                                XCTFail("Unexpected error!")
+                                return
+                            }
                         }
             })
     }

@@ -2,29 +2,35 @@ import Foundation
 @testable import Buddy
 
 struct MockedSession: SessionProtocol {
-    let json: String
-    let completionResponse: ((Data?, URLResponse?, Error?) -> Void)
-
+    let data: Data?
+    let response: URLResponse?
+    let error: Error?
+    
+    let completionRequest: (URLRequest) -> Void
+    
     func dataTask(with request: URLRequest,
                   completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-
-        guard let url = request.url else {
-            completion(nil, nil, MockedSessionError.badURL)
-            return
+        
+        completion(data, response, error)
+        completionRequest(request)
+    }
+    
+    static func simulate(failure error: Error,
+                         completion: @escaping (URLRequest) -> Void) -> SessionProtocol {
+        return MockedSession(data: nil,
+                             response: nil,
+                             error: error) { request in
+                                completion(request)
         }
-
-        let response = URLResponse(url: url,
-                                   mimeType: nil,
-                                   expectedContentLength: 0,
-                                   textEncodingName: nil)
-
-        guard let data = JSONMock.loadJson(fromResource: json) else {
-            completion(nil, response, MockedSessionError.badJSON)
-            return
+    }
+    
+    static func simulate(success data: Data,
+                         completion: @escaping (URLRequest) -> Void) -> SessionProtocol {
+        return MockedSession(data: data,
+                             response: nil,
+                             error: nil) { request in
+                                completion(request)
         }
-
-        completionResponse(data, response, nil)
-        completion(data, response, nil)
     }
 }
 

@@ -40,8 +40,8 @@ struct BuddyService {
     private func decode<T: Decodable>(response: Data?,
                                       map: T.Type,
                                       error: Error?) -> (Result<T>) {
-        if error != nil {
-            return (.failure(BuddyError.responseError))
+        if let error = error {
+            return (.failure(error))
         }
 
         guard let jsonData = response else {
